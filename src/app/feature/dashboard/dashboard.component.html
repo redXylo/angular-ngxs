@@ -1,0 +1,71 @@
+<mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark pink scrolling-navbar ie-nav" [containerInside]="false">
+    <mdb-navbar-brand>
+        <a class="logo navbar-brand" href="#"><strong>Navbar</strong></a>
+    </mdb-navbar-brand>
+    <links>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active waves-light" mdbWavesEffect>
+                <a class="nav-link">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item waves-light" mdbWavesEffect>
+                <a class="nav-link">Features</a>
+            </li>
+            <li class="nav-item waves-light" mdbWavesEffect>
+                <a class="nav-link">Pricing</a>
+            </li>
+            <li class="nav-item waves-light" mdbWavesEffect>
+                <a class="nav-link">Opinions</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav nav-flex-icons">
+            <li class="nav-item waves-light" mdbWavesEffect>
+                <a class="nav-link"><i class="fa fa-facebook"></i></a>
+            </li>
+            <li class="nav-item waves-light" mdbWavesEffect>
+                <a class="nav-link"><i class="fa fa-twitter"></i></a>
+            </li>
+            <li class="nav-item waves-light" mdbWavesEffect>
+                <a class="nav-link"><i class="fa fa-instagram"></i></a>
+            </li>
+        </ul>
+    </links>
+</mdb-navbar>
+<!-- Main -->
+<main>
+    <div class="container" style="height:1300px;">
+        <div class="row mt-5 pt-5">
+            <div class="col text-center">
+                <h2>Profile:  </h2>
+                <table mdbTable bordered="true">
+                    <thead>
+                    <tr>
+                        <th>Profile Name</th>
+                        <th>Nick Name</th>
+                        <th>Owner ID</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr mdbTableCol *ngFor="let p of profiles$ | async">
+                        <th scope="row">{{p.nick_name}}</th>
+                        <td>{{p.profile_name}}</td>
+                        <td>{{p.owner_id}}</td>
+                        <td>{{p.status}}</td>
+                        <td> <button mdbBtn type="button" color="primary" class="waves-light" mdbWavesEffect (click)="getAccounts(1)">Get Accounts</button></td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+                <ul>
+                <li *ngFor="let a of accounts$ | async ">
+                   {{ a.product_id}}
+                </li>
+                </ul>
+
+
+            </div>
+        </div>
+    </div>
+</main>
